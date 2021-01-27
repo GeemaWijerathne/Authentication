@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login Screen</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+<h1> Password Re-Issue Screen(Enter Information)</h1>
+<div class="container">
+
+<h3>Password will be Re Issued</h2>
+<h3>Please Enter Your ID and Email Address</h3>
+<h4>If the ID and Email do not match, Processing will not be Possible</h4>
+
+<form class="form-horizontal" name="pwRequestForm" method="POST" action="setNewPW.html">
+    <table>
+        <tr>
+            <th class="required"><i class="fa fa-user" aria-hidden="true"></i> ID</th>
+            <td>
+                <div class="form-control">
+                    <div class="input">
+                        <input type="text" class="validation" name="id" id="id" value="" maxlength="10" placeholder="Enter ID" required>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="required"><i class="fa fa-envelope" aria-hidden="true"></i> E-Mail</th>
+            <td>
+                <div class="form-control">
+                    <div class="input">
+                        <input type="email" class="validation" name="email" id="email" value="" placeholder="Enter E-Mail" required>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+      <br>
+    <div id="submit_box">
+        <button type="submit" class="btn_submit" id="submit" disabled> Password ReIssue</button>
+    </div>  
+    
+</form>
+</div>
+</body>
+
+</html>
+
+<script>
+    const btn = document.getElementById("submit");
+    const username = document.getElementById("id");
+    const email = document.getElementById("email");
+    let isUsernameNull = true;
+    let isEmailNull = true;
+    
+    username.addEventListener("change", function(e) {
+       if (e.target.value !== "") {
+         isUsernameNull = false;
+       } else {
+         isUsernameNull = true;
+       }
+      
+       if (isUsernameNull || isEmailNull) 
+        btn.disabled = true
+       else  
+        btn.disabled = false
+    });
+    
+    email.addEventListener("keyup", function(e) {
+      if (e.target.value !== "") {
+        isEmailNull = false;
+      } else {
+        isEmailNull = true;
+      }
+      
+      if (isUsernameNull || isEmailNull) 
+        btn.disabled = true
+      else 
+        btn.disabled = false
+    });
+    
+    btn.addEventListener("click", function(e) {
+      if (username.value === "" || email.value === "") {
+        alert("Add Some Value");
+        btn.disabled = true; 
+      }else if(username.value != "kau839dsda" && email.value != "abc@gmail.com"){
+          alert('The EMail Address you Entered does not match with ID!');
+          btn.disabled = true; 
+
+      }else{
+        btn.disabled = false;
+      }
+    });
+    
+</script>

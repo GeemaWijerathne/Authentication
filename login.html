@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login Screen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <h1> Login Screen</h1><br>
+
+    <div class="container">
+    <form class="form-horizontal" name="loginForm" method="POST" action="">
+      <table>
+        <tr>
+          <th class="required"><i class="fa fa-user" aria-hidden="true"></i> ID</th>  
+          <td>
+            <div class="form-control">
+              <div class="input">
+                <input type="text" class="validation" name="id" id="id" value="" maxlength="10" placeholder="Enter ID" required>
+              </div>
+            </div>    
+          </td>
+        </tr>
+
+        <tr>
+          <th class="required"><i class="fa fa-lock" aria-hidden="true"></i> Password</th>
+          <td>
+            <div class="form-control">            
+              <div class="input">
+                <input type="password" class="validation" name="pw" id="pw" value="" maxlength="12" placeholder="Enter Password" required>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <br>
+      
+      <div id="submit_box">
+            <button type="submit" class="btn_submit" id="submit"> Login</button>
+      </div>
+
+        &nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+    </form>
+    </div>
+
+    <br>
+
+    <div id="footer"><br>
+        <p>Click here for New ID <a href="register.html">Registration</a></p>
+        <p>Click here for Forgot <a href="requestPW.html">Password</a></p>
+    </div>
+  </body>
+
+</html>
+
+<script>
+    const btn = document.getElementById("submit");
+    const username = document.getElementById("id");
+    const password = document.getElementById("pw");
+    let isUsernameNull = true;
+    let isPasswordNull = true;
+    
+    username.addEventListener("change", function(e) {
+       if (e.target.value !== "") {
+         isUsernameNull = false;
+       } else {
+         isUsernameNull = true;
+       }
+      
+      if (isUsernameNull || isPasswordNull) 
+        btn.disabled = true
+      else  
+        btn.disabled = false
+    });
+    
+    password.addEventListener("keyup", function(e) {
+      if (e.target.value !== "") {
+        isPasswordNull = false;
+      } else {
+        isPasswordNull = true;
+      }
+      
+      if (isUsernameNull || isPasswordNull) 
+        btn.disabled = true
+      else 
+        btn.disabled = false
+    });
+    
+    btn.addEventListener("click", function(e) {
+      if (username.value === "" || password.value === "") {
+        btn.disabled = true; 
+        alert("Please enter the ID and Password!");
+      }else if(username.value != "kau839dsda" && password.value != "kaid92884dka") {
+        Ext.MessageBox.alert('Alert', 'An alert!');
+        alert('Authentication Failure!');
+      }else{
+          btn.disabled = false;
+          alert('Authentication Successful!');
+          
+          
+      }
+
+    });
+    
+
+</script>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>New ID Registration Screen</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</head>
+
+<body>
+
+<h1> New ID Registration Screen</h1>
+<div class="container">
+   <form class="form-horizontal" name="regForm" method="POST" action="regFinal.html">
+      <table>
+        <strong>Please be sure to enter the items marked with <mark class="red">*</mark></strong>
+        <tr>
+            <th class="requiredField"><i class="fa fa-industry" aria-hidden="true"></i> Company Name</th>
+            <td>
+                <div class="form-control">
+                    <div class="input">
+                        <input type="text" class="validation" name="cmpname" id="cmpname" value="" maxlength="100" placeholder="Enter Company Name" required>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="requiredField"><i class="fa fa-user" aria-hidden="true"></i> Name</th>
+            <td>
+                <div class="form-control">
+                    <div class="input">
+                        <input type="text" class="validation" name="name" id="name" value="" maxlength="50" placeholder="Enter Name" required>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="requiredField"><i class="fa fa-envelope" aria-hidden="true"></i> E-Mail</th>
+            <td>
+                <div class="form-control">
+                    <div class="input">
+                        <input type="email" class="validation" name="email" id="email" value="" maxlength="30" placeholder="Enter E-Mail " required>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="requiredField"><i class="fa fa-phone" aria-hidden="true"></i> Phone</th>
+            <td>
+                <div class="form-control">
+        
+                    <div class="input">
+                        <input type="tel" class="validation" name="phone" id="phone" value=""  placeholder="Enter Phone" required>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+      <br>
+    <div id="submit_box">
+        <button type="submit" class="btn_submit" id="submit"  onclick ="setCredintials()">Register</button>
+    </div>
+  </form>
+</div>
+<br>
+<div id="footer"><br>
+    <p>Already a Member <a href="login.html">Login</a></p>
+</div>
+
+</body>
+</html>
+
+<script>
+
+function setCredintials(){
+    const btn = document.getElementById("submit");
+    const cmpname = document.getElementById("cmpname").value;
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+
+    if (cmpname != '' && name != '' && email != '' && phone != '') {
+        btn.disabled = false;
+    }else{
+        alert('Please fill all the Required Fields!');
+        
+    }
+}
+
+</script>

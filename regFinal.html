@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Set ID and Password</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+
+<body class>
+<h1> Set ID and Password</h1>
+<div class="container">
+  <form class="form-horizontal" name="setCredintialsForm" method="POST" action="showCredintialsmodal.html">
+      <table>
+        <tr>
+            <th class="required"><i class="fa fa-user" aria-hidden="true"></i> ID</th>
+            <td>
+                <div class="form-control">
+                    <div class="input">
+                        <input type="text" class="validation" name="id" id="id" value="" maxlength="10" placeholder="Type ID with 10 Characters" required>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="required"><i class="fa fa-lock" aria-hidden="true"></i> Password</th>
+            <td>
+                <div class="form-control">
+                    <div class="input">
+                        <input type="password" class="validation" name="pw" id="pw" value="" maxlength="12" placeholder=" maximum 12 Characters" required>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="required"><i class="fa fa-lock" aria-hidden="true"></i> Password(Re-Enter)</th>
+            <td>
+                <div class="form-control">
+                    <div class="input">
+                        <input type="password" class="validation" name="pwConfirm" id="pwConfirm" value="" maxlength="12" placeholder="Password" required>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+      <br>
+    <div id="submit_box">
+        <button type="submit" class="btn_submit" id="submit" disabled>Issue Credintials</button>
+    </div>
+    
+  </form>
+</div>
+</body>
+</html>
+
+<script>
+    const btn = document.getElementById("submit");
+    const username = document.getElementById("id");
+    const password = document.getElementById("pw");
+    const pwCnfm = document.getElementById("pwConfirm");
+
+    let isUsernameNull = true;
+    let isPwCnfmNull = true;
+            
+    username.addEventListener("change", function(e) {
+    if (e.target.value !== "") {
+        isUsernameNull = false;
+    } else {
+        isUsernameNull = true;
+    }
+            
+    if (isUsernameNull || isPwCnfmNull) 
+        btn.disabled = true
+    else  
+        btn.disabled = false
+    });
+            
+    pwCnfm.addEventListener("keyup", function(e) {
+    if (e.target.value !== "") {
+        isPwCnfmNull = false;
+    } else {
+        isPwCnfmNull = true;
+    }
+            
+    if (isUsernameNull || isPwCnfmNull) 
+        btn.disabled = true
+    else 
+        btn.disabled = false
+    });
+            
+    btn.addEventListener("click", function(e) {
+    if (username.value === "" || password.value === "") {
+        alert("ID / Password is Missing!");
+        btn.disabled = true; 
+    } else if (pwCnfm.value === ""){
+        alert("Please Re-Enter the Password!");
+        btn.disabled = true;         
+    }else if(password.value != pwCnfm.value){
+        alert('Password Mismatching!');
+        btn.disabled = true;
+    }else{
+        btn.disabled = false;               
+    }
+    });
+
+</script>
+
+

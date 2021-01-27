@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Set New Password</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css"> 
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+<h1> Set New Password</h1><br>
+<div class="container">
+<form class="form-horizontal" name="showChangedCredintialsForm" method="POST" action="showPasswordmodal.html">
+    <table>
+        <tr>
+            <th class="required"><i class="fa fa-lock" aria-hidden="true"></i> New Password</th>
+            <td>
+                <div class="form-control">
+                    <div class="input">
+                        <input type="password" class="validation" name="pw" id="pw" value="" maxlength="12" placeholder="Type Password with 12 Characters" required>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="required"><i class="fa fa-lock" aria-hidden="true"></i> Re Enter New Password</th>
+            <td>
+                <div class="form-control">
+                    <div class="input">
+                        <input type="password" class="validation" name="pwConfirm" id="pwConfirm" value="" maxlength="12" placeholder=" Type Password with 12 Characters" required>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+      <br>
+    <div id="submit_box">
+        <button type="submit" class="btn_submit" id="submit" disabled>Save Password</button>
+    </div>
+    
+</form>
+</div>
+</body>
+
+</html>
+
+<script>
+    
+        const btn = document.getElementById("submit");
+        const password = document.getElementById("pw");
+        const pwCnfm = document.getElementById("pwConfirm");
+
+        let isPasswordNull = true;
+        let isPwCnfmNull = true;
+        
+        password.addEventListener("change", (e) => {
+        if (e.target.value !== "") {
+            isPasswordNull = false;
+        } else {
+            isPasswordNull = true;
+        }        
+            
+        if (isPasswordNull || isPwCnfmNull) 
+            btn.disabled = true
+        else  
+            btn.disabled = false
+        });
+        
+        pwCnfm.addEventListener("keyup", (e) => {
+        if (e.target.value !== "") {
+            isPwCnfmNull = false;
+        } else {
+            isPwCnfmNull = true;
+        }
+            
+        if (isPasswordNull || isPwCnfmNull) 
+            btn.disabled = true
+        else 
+            btn.disabled = false
+        });
+            
+        btn.addEventListener("click", (e) => {
+        if (password.value === "" || pwCnfm.value === "") {
+            btn.disabled = true; 
+            alert("ID / Password is Missing!");
+        }else if (pwCnfm.value === ""){
+            btn.disabled = true; 
+            alert("Please Re-Enter the Password!");            
+        }else if(password.value != pwCnfm.value){
+            btn.disabled = true; 
+            alert('Password Mismatching!');
+        }else
+        {
+            btn.disabled = false;                   
+        }
+        });
+
+</script>
+
+
+
