@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
  </head> 
 
@@ -23,8 +23,8 @@
         <div class="modal-body" style="padding:40px 50px;">
           <h4>Thanks for Registering</h4>
 		  <h4>Your ID and Password</h4>
-		  <h5>ID : kau839dsda </h5>
-		  <h5>Password : kaid92884dka </h5>
+		  <h5>ID : <span id ="spanId"></span></h5>
+		  <h5>Password : <span id ="spanPW"></span> </h5>
 
         </div>
         <div class="modal-footer">
@@ -45,4 +45,15 @@
 function back_login(){
     window.location.href="login.html";
 }
+
+var queryString = decodeURIComponent(window.location.search);
+queryString = queryString.substring(1);
+var queries = queryString.split("&");
+  var username = queries[0].split("=");
+  var password = queries[1].split("=");
+  $('#spanId').text(username[1]);
+  $('#spanPW').text(password[1]);
+
+
+
 </script>
